@@ -7,22 +7,29 @@ def home(request):
     return render(request, 'HalfFull/home.html', context=context_dict)
 
 def about(request):
-    return HttpResponse("This is the about page, <a href='/HalfFull/'>home</a>")
+    context_dict = {}
+    return render(request, 'HalfFull/about.html', context=context_dict)
 
 def contact(request):
-    return HttpResponse("This is the contact page, <a href='/HalfFull/'>home</a>")
+    context_dict = {}
+    return render(request, 'HalfFull/contact.html', context=context_dict)
 
 def login(request):
-    return HttpResponse("This is the login page, <a href='/HalfFull/'>home</a>")
+    context_dict = {}
+    return render(request, 'HalfFull/login.html', context=context_dict)
 
 def signup(request):
-    return HttpResponse("This is the signup page, <a href='/HalfFull/'>home</a>")
+    context_dict = {}
+    return render(request, 'HalfFull/signup.html', context=context_dict)
 
 def userpage(request):
-    return HttpResponse("This is the user page, <a href='/HalfFull/'>home</a>")
+    context_dict = {}
+    return render(request, 'HalfFull/userpage.html', context=context_dict)
 
 def make_a_crawl(request):
-    return HttpResponse("This is the make a crawl page, <a href='/HalfFull/'>home</a>")
+    context_dict = {}
+    return render(request, 'HalfFull/make_a_crawl.html', context=context_dict)
 
 def pub_list(request):
-    return HttpResponse("This is the pub list page, <a href='/HalfFull/'>home</a>")
+    context_dict = {}
+    return render(request, 'HalfFull/pub_list.html', context=context_dict)
