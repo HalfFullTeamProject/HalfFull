@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from HalfFull.forms import UserForm
 
 from django.contrib.auth import authenticate, login 
 from django.http import HttpResponse 
@@ -25,8 +25,34 @@ def login(request):
     return render(request, 'HalfFull/login.html', context=context_dict)
 
 def signup(request):
-    context_dict = {}
-    return render(request, 'HalfFull/signup.html', context=context_dict)
+    registered=False
+    
+    if request.method == 'POST':
+    
+        user_form = UserForm(request.POST)
+
+    
+        if user_form.is_valid(): 
+            user = user_form.save() 
+            user.set_password(user.password)
+            user.save()
+        
+
+            profile.user = user
+        
+            
+            
+            
+            profile.save()
+        
+            registered=True
+        else:
+            print(user_form.errors, profile_form.errors)
+            
+    else:
+        user_form = UserForm()
+        
+    return render(request, 'HalfFull/signup.html', context = {'user_form': user_form, 'registered': registered})
 
 def userpage(request):
     context_dict = {}
