@@ -22,4 +22,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('HalfFull/', include('HalfFull.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('registration.backends.simple.urls')),
+
 ]
