@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from HalfFull.forms import UserForm
+from HalfFull.forms import UserForm, PubForm
 
 from django.contrib.auth import authenticate, login 
 from django.http import HttpResponse 
@@ -21,8 +21,25 @@ def contact(request):
     return render(request, 'HalfFull/contact.html', context=context_dict)
 
 def login(request):
-    context_dict = {}
-    return render(request, 'HalfFull/login.html', context=context_dict)
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(username=username, password=password)
+        
+        if user:
+            if user.is_active:
+                login(request, user)
+                return redirect(reverse('HalfFull:home'))
+            else:
+                return HttpResponse("Your HalfFull account is disabled.")
+                
+        else:
+            print(f"Invalid login details: {username}, {password}") 
+            return HttpResponse("Invalid login details supplied.")
+            
+    else:
+        return render(request, 'HalfFull/login.html')
 
 def signup(request):
     registered=False
@@ -65,5 +82,19 @@ def make_a_crawl(request):
 def pub_list(request):
     context_dict = {}
     return render(request, 'HalfFull/pub_list.html', context=context_dict)
+    
+def add_a_pub(request):
+    form = PubForm
+    
+    if request.method == 'POST':
+        form = PubForm(request.POST)
+        
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('/HalfFull/')
+        else:
+            print(form.errors)
+            
+    return render(request, 'HalfFull/add_a_pub.html', {'form':form})    
     
 
