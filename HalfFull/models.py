@@ -19,3 +19,11 @@ class Pub(models.Model):
     
     def __str__(self): 
         return self.name
+        
+class Crawl(models.Model):
+    name = models.CharField(max_length=128, unique=True)
+    pubs = models.ManyToManyField(Pub)
+    
+            
+    
+    
