@@ -3,12 +3,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.user.username
-
 class Pub(models.Model):
     name = models.CharField(max_length=128, unique=True)
     
@@ -20,9 +14,13 @@ class Pub(models.Model):
     def __str__(self): 
         return self.name
         
-class Crawl(models.Model):
-    name = models.CharField(max_length=128, unique=True)
-    pubs = models.ManyToManyField(Pub)
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
+    crawl = models.ManyToManyField(Pub)
+    def __str__(self):
+        return self.user.username
+        
     
             
     

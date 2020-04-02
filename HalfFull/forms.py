@@ -1,7 +1,7 @@
 from django import forms 
 from django.contrib.auth.models import User 
 from django.contrib.auth.models import User 
-from HalfFull.models import UserProfile, Pub, Crawl
+from HalfFull.models import UserProfile, Pub
 
 class UserForm(forms.ModelForm): 
     

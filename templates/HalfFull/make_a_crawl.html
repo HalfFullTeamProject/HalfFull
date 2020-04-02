@@ -4,3 +4,22 @@
 {% block title_block %}
     Make a Crawl
 {% endblock %}
+
+
+{% block body_block %}
+{% if user.is_authenticated %}
+<div class="jumbotron p-4">
+	<div class="container">
+	<h1 class="jumbotron heading">Your crawl</h1>
+	<p class="lead">pubs you add to your crawl will be shown here</p>
+	</div>
+  </div>
+  {% else %}
+  div class="jumbotron p-4">
+	<div class="container">
+	<h1 class="jumbotron heading">Sorry!</h1>
+	<p class="lead">you must be logged in to add pubs to HalfFull</p>
+	</div>
+  </div>
+  {% endif %}
+{% endblock %}
