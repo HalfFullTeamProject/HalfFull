@@ -7,6 +7,8 @@
 
 {% block body_block %}
 
+{% if user.is_authenticated %}
+
   <div class="jumbotron p-4">
 	<div class="container">
 	<h1 class="jumbotron heading">Add a Pub</h1>
@@ -34,4 +36,13 @@
     </form>
   </div>
   </div>
+  
+  {% else %}
+  div class="jumbotron p-4">
+	<div class="container">
+	<h1 class="jumbotron heading">Sorry!</h1>
+	<p class="lead">you must be logged in to add pubs to HalfFull</p>
+	</div>
+  </div>
+  {% endif %}
 {% endblock %}

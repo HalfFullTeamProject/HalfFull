@@ -54,17 +54,9 @@ def signup(request):
             user.set_password(user.password)
             user.save()
         
-
-            profile.user = user
-        
-            
-            
-            
-            profile.save()
-        
             registered=True
         else:
-            print(user_form.errors, profile_form.errors)
+            print(user_form.errors)
             
     else:
         user_form = UserForm()
@@ -91,7 +83,7 @@ def add_a_pub(request):
         
         if form.is_valid():
             form.save(commit=True)
-            return redirect('/HalfFull/')
+            return redirect('/HalfFull/home/')
         else:
             print(form.errors)
             

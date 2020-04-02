@@ -5,8 +5,16 @@
     Log In
 {% endblock %}
 
-{% block body_block %} 
-<h1>Login to HalfFull</h1> 
+{% block body_block %}
+<div class="jumbotron p-4">
+	<div class="container">
+	<h1 class="jumbotron heading">Login</h1>
+	<p class="lead">Login to HalfFull here!</p>
+	</div>
+  </div>
+ {% if user.is_authenticated %}
+	You are already logged in
+{% else %}
 <div class="container">
 <form id="login_form" method="post" action="{% url 'HalfFull:login' %}">
 	{% csrf_token %} 
@@ -19,5 +27,5 @@
 	<button class="btn btn-lg btn-primary btn-block" type="submit" value="submit">Sign In</button> 
 </form>
 </div>
-
+{% endif %}
 {% endblock %}

@@ -6,43 +6,33 @@
 {% endblock %}
 
 {% block body_block %}
-<h1>Register for HalfFull</h1>
-{% if registered %}
-Rango says: <strong>thank you for registering!</strong>
-<a href="{% url 'HalfFull:home' %}">Return to the homepage.</a><br />
-{% else %}
 
-<div class="container">
-	<div class="row">
-	<div class="form-group">
-	<form id="user_form" method="post" action="{% url 'HalfFull:signup' %}"
+{% if registered %}
+<strong>thank you for registering!</strong>
+{% else %}
+<div class="jumbotron p-4">
+	<div class="container">
+	<h1 class="jumbotron heading">Sign Up for HalfFull</h1>
+	<p class="lead">Why not become a member of HalfFull here!</p>
+	</div>
+  </div>
+  <div class="container">
+  <div class = "row">
+      <form id="user_form" method="post" action="{% url 'HalfFull:signup' %}"
 	enctype="multipart/form-data">
-	{% csrf_token %}
-	<div class="form-group">
 	
-	<p class="required"><label class="required" for="id_username">
-		Username:</label>
-	<input class="form-control" id="username" name="username"
-		type="username" />
-	<span class="helptext">
-		Required. 30 characters or fewer.
-	</span>
-	</p>
-	<p class="required"><label class="required" for="id_email">
-		E-mail:</label>
-	<input class="form-control" id="id_email" name="email"
-		type="email" />
-	</p>
-	<p class="required"><label class="required" for="id_password1">
-		Password:</label>
-	<input class="form-control" id="id_password1" name="password1"
-		type="password" />
-	</p>
-	</div>
-	<button class="btn btn-lg btn-primary btn-block" type="submit" value="submit">Sign up</button> 
-	</form>
-	</div>
-</div>
-</div>
-{% endif %}
+	{% csrf_token %}
+	
+	{{ user_form.as_p }} </ br>
+		<div class="p-2"></div>
+
+	  <br />
+      <button class="btn btn-primary" type="submit" name="submit">
+		Sign Up
+	  </button>
+	  <div class="p-5"></div>
+    </form>
+  </div>
+  </div>
+  {% endif %}
 {% endblock %}
