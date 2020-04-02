@@ -6,7 +6,16 @@
 {% endblock %}
 
 {% block body_block %} 
-
+<div class="jumbotron p-4">
+	<div class="container">
+	<h1 class="jumbotron heading">Welcome to HalfFull</h1>
+	<p class="lead">The app for all your drinking needs</p>
+	{% if user.is_authenticated %}
+		<p class="lead">welcome back {{ user.username }}</p>
+	{% endif %}
+	</div>
+  </div>
+  
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -18,24 +27,24 @@
 	  <a href="/HalfFull/make_a_crawl/">
       <img src="/static/images/pub_crawl.jpg" class="d-block w-100" alt="pub crawl">
       <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Plan your night out</p>
+        <h5>Plan your night out</h5>
+        <p></p>
       </div>
     </div>
     <div class="carousel-item">
 	<a href="/HalfFull/pub_list/">
       <img src="/static/images/pubs.jpg" class="d-block w-100" alt="pubs">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Find New Pubs</p>
+        <h5>Find New Pubs</h5>
+        <p></p>
       </div>
     </div>
     <div class="carousel-item">
 	  <a href="/HalfFull/signup">
       <img src="/static/images/profile.jpg" class="d-block w-100" alt="profile">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>SignUp to become part of HalfFull</p>
+        <h5>SignUp to become part of HalfFull</h5>
+        <p></p>
       </div>
     </div>
   </div>
