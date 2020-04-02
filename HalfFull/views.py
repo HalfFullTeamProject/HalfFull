@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from HalfFull.forms import UserForm, PubForm
+from HalfFull.models import Pub
 
 from django.contrib.auth import authenticate, login 
 from django.http import HttpResponse 
@@ -47,14 +48,13 @@ def signup(request):
     if request.method == 'POST':
     
         user_form = UserForm(request.POST)
-
+        profile_form = UserProfileForm(request.POST)
     
         if user_form.is_valid(): 
             user = user_form.save() 
             user.set_password(user.password)
             user.save()
         
-
             profile.user = user
         
             
@@ -73,6 +73,7 @@ def signup(request):
 
 def userpage(request):
     context_dict = {}
+	
     return render(request, 'HalfFull/userpage.html', context=context_dict)
 
 def make_a_crawl(request):
@@ -81,6 +82,11 @@ def make_a_crawl(request):
 
 def pub_list(request):
     context_dict = {}
+    
+    pubs = Pub.objects.all()
+    context_dict['pubs'] = [pubs]
+	
+		
     return render(request, 'HalfFull/pub_list.html', context=context_dict)
     
 def add_a_pub(request):

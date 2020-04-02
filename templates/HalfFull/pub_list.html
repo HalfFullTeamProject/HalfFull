@@ -6,4 +6,19 @@
 {% endblock %}
 
 {% block body_block %}
-<h1>List of Pubs</h1>
+	<div class="jumbotron p-4">
+		<h1 class="display-4">Pubs</h1>
+	</div>
+	<div>
+	{% for pub in pubs %}
+		<div class="container">
+		<h2>{{ pub.name }}</h2>
+		<p>pub</p>
+		<img src="{{pub.picture}}"/>
+		<p>{{ pub.drinks }}</p>
+		<p>{{ pub.atmosphere }}</p>
+		<p>{{ pub.service }}</p>
+		</div>
+	{% endfor %}
+	</div>
+{% endblock %}

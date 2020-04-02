@@ -4,3 +4,15 @@
 {% block title_block %}
     Userpage
 {% endblock %}
+
+{% block body_block %}
+<div class="jumbotron p-4">
+   <h1 class="display-4">Your Profile</h1>
+   <p class="lead">Username: {{ user.username }} </p>
+</div>
+
+<div class="container">
+   <a href="{% url 'HalfFull:add_a_pub' %}">Add a New Pub</a><br />
+   <a href="{% url 'HalfFull:make_a_crawl' %}">Make a New Crawl</a>
+</div>
+{% endblock %}
