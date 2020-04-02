@@ -13,11 +13,10 @@
 	{% for pub in pubs %}
 		<div class="container">
 		<h2>{{ pub.name }}</h2>
-		<p>pub</p>
 		<img src="{{pub.picture}}"/>
-		<p>{{ pub.drinks }}</p>
-		<p>{{ pub.atmosphere }}</p>
-		<p>{{ pub.service }}</p>
+		<p>Drinks rating: {{ pub.drinks }}</p>
+		<p>Atmosphere rating: {{ pub.atmosphere }}</p>
+		<p>Service rating: {{ pub.service }}</p>
 		</div>
 	{% endfor %}
 	</div>

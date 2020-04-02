@@ -84,9 +84,9 @@ def pub_list(request):
     context_dict = {}
     
     pubs = Pub.objects.all()
-    context_dict['pubs'] = [pubs]
+    context_dict['pubs'] = pubs
 	
-		
+	
     return render(request, 'HalfFull/pub_list.html', context=context_dict)
     
 def add_a_pub(request):
