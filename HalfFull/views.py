@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from HalfFull.forms import UserForm, PubForm
+from HalfFull.models import Pub
 
 from django.contrib.auth import authenticate, login 
 from django.http import HttpResponse 
@@ -73,6 +74,10 @@ def make_a_crawl(request):
 
 def pub_list(request):
     context_dict = {}
+	
+    pubs = Pub.objects.all()
+    context_dict['pubs'] = pubs
+	
     return render(request, 'HalfFull/pub_list.html', context=context_dict)
     
 def add_a_pub(request):

@@ -4,3 +4,22 @@
 {% block title_block %}
     Pub List
 {% endblock %}
+
+{% block body_block %}
+	<div class="jumbotron p-4">
+	<div class="container">
+		<h1 class="jumbotron heading">Pubs</h1>
+	</div>
+	</div>
+	<div>
+	{% for pub in pubs %}
+		<div class="container">
+		<h2>{{ pub.name }}</h2>
+		<img src="{{pub.picture}}"/>
+		<p>Drinks rating: {{ pub.drinks }}</p>
+		<p>Atmosphere rating: {{ pub.atmosphere }}</p>
+		<p>Service rating: {{ pub.service }}</p>
+		</div>
+	{% endfor %}
+	</div>
+{% endblock %}

@@ -4,3 +4,26 @@
 {% block title_block %}
     Userpage
 {% endblock %}
+
+{% block body_block %}
+{% if user.is_authenticated %}
+   <div class="jumbotron p-4">
+      <h1 class="display-4">Your Profile</h1>
+      <p class="lead">Username: {{ user.username }} </p>
+   </div>
+   
+   <div class="container">
+   <p class="lead">From here you can add a new pub, or make a crawl of your favourite pubs.</p>
+   </div>
+   
+   <div class="container">
+      <a href="{% url 'HalfFull:add_a_pub' %}">Add a New Pub</a><br />
+      <a href="{% url 'HalfFull:make_a_crawl' %}">Make a New Crawl</a>
+   </div>
+{% else %}
+   <div class="jumbotron p-4">
+	  <h1 class="display-4">Sorry!</h1>
+      <p class="lead">you must be logged in to view your profile</p>
+   </div>
+{% endif %}
+{% endblock %}
