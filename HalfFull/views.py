@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from HalfFull.forms import UserForm, PubForm
-from HalfFull.models import Pub
+from HalfFull.forms import UserForm, PubForm#, #CrawlForm
+from HalfFull.models import Pub, UserProfile
 
 from django.contrib.auth import authenticate, login 
 from django.http import HttpResponse 
@@ -70,6 +70,12 @@ def userpage(request):
 
 def make_a_crawl(request):
     context_dict = {}
+    
+    userprofile = UserProfile(user=request.user)
+    userprofile.save()
+    crawls = userprofile.crawl.all()
+    context_dict['crawls'] = crawls
+    
     return render(request, 'HalfFull/make_a_crawl.html', context=context_dict)
 
 def pub_list(request):
@@ -77,6 +83,18 @@ def pub_list(request):
 	
     pubs = Pub.objects.all()
     context_dict['pubs'] = pubs
+    
+    user1 = request.user
+    
+    if request.method == 'POST':
+        name = pub.name
+        atmosphere=pub.atmosphere
+        service=pub.service
+        drinks=pub.drinks
+        picture=pub.picure
+        crawl1 = pub(name = pub.name, atmosphere=pub.atmosphere, service=pub.service, drinks=pub.drinks, picture=pub.picure)
+        crawl1.save()
+        user1.crawl.add(crawl1)
 	
     return render(request, 'HalfFull/pub_list.html', context=context_dict)
     

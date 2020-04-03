@@ -11,14 +11,25 @@
 		<h1 class="jumbotron heading">Pubs</h1>
 	</div>
 	</div>
+	
 	<div>
 	{% for pub in pubs %}
 		<div class="container">
-		<h2>{{ pub.name }}</h2>
-		<img src="{{pub.picture}}"/>
-		<p>Drinks rating: {{ pub.drinks }}</p>
-		<p>Atmosphere rating: {{ pub.atmosphere }}</p>
-		<p>Service rating: {{ pub.service }}</p>
+		
+		<div class="card" style="width: 18rem;">
+        <img src="{{pub.picture}}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">{{ pub.name }}</h5>
+        <p class="card-text">Drinks rating: {{ pub.drinks }}</p>
+		<p class="card-text">Drinks rating: {{ pub.atmosphere }}</p>
+		<p class="card-text">Drinks rating: {{ pub.service }}</p>
+		{% if user.is_authenticated %}
+        <button class="btn btn-primary" type="submit" name="submit">
+		Add to Crawl
+	  </button>
+		{% endif %}
+		</div>
+</div>
 		</div>
 	{% endfor %}
 	</div>
